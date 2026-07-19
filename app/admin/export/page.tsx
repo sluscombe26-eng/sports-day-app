@@ -10,21 +10,13 @@ export default function ExportPage() {
       <h1>Export Registrations</h1>
 
       <p>
-        Download all registrations as an Excel file.
+        Download all registrations as an Excel
+        file.
       </p>
 
-      api/export"
-        style={{
-          display: "inline-block",
-          background: "#2563eb",
-          color: "white",
-          padding: "12px 20px",
-          borderRadius: "8px",
-          textDecoration: "none",
-        }}
-      >
-        Download Excel Export
-      </a>
+      <p>
+        Export functionality coming next.
+      </p>
     </main>
   );
 }
