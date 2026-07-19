@@ -16,6 +16,7 @@ export default function ExportPage() {
       <a
         href="/api/export"
         style={{
-          </main>
-  );
-}
+          display: "inline-block",
+          background: "#2563eb",
+          color: "white",
+          padding
