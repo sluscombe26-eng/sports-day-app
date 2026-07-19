@@ -50,6 +50,7 @@ export default function Home() {
           <div>👥 Registrations Open</div>
         </div>
 
+        
         <EventsList />
 
         <RegisterForm />
