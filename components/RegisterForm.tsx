@@ -167,19 +167,20 @@ if (membersData) {
 
             {selectedEvents.includes(event.id) &&
               event.event_type === "team" && (
-                <TeamPicker
-                  eventName={event.name}
-                  teams={teams}
-                  selectedTeam={
-                    selectedTeams[event.id] || ""
-                  }
-                  onSelect={(teamId) => {
-                    setSelectedTeams({
-                      ...selectedTeams,
-                      [event.id]: teamId,
-                    });
-                  }}
-                />
+               <TeamPicker
+  eventName={event.name}
+  teams={teams}
+  members={teamMembers}
+  selectedTeam={
+    selectedTeams[event.id] || ""
+  }
+  onSelect={(teamId) => {
+    setSelectedTeams({
+      ...selectedTeams,
+      [event.id]: teamId,
+    });
+  }}
+/>
               )}
           </div>
         ))}
