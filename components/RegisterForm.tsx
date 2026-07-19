@@ -29,26 +29,20 @@ export default function RegisterForm() {
         .select("*")
         .order("name");
 
-      if (eventsData) {
-        setEvents(eventsData);
-      }
+      if (eventsData) setEvents(eventsData);
 
       const { data: teamsData } = await supabase
         .from("teams")
         .select("*")
         .order("team_name");
 
-      if (teamsData) {
-        setTeams(teamsData);
-      }
+      if (teamsData) setTeams(teamsData);
 
       const { data: membersData } = await supabase
         .from("team_members")
         .select("*");
 
-      if (membersData) {
-        setTeamMembers(membersData);
-      }
+      if (membersData) setTeamMembers(membersData);
     }
 
     loadData();
@@ -86,7 +80,9 @@ export default function RegisterForm() {
         ]);
     }
 
-    setMessage("✅ Registration submitted");
+    setMessage(
+      "🎉 You're in! Your registration has been submitted successfully."
+    );
 
     setName("");
     setEmail("");
@@ -101,13 +97,35 @@ export default function RegisterForm() {
     <div
       style={{
         background: "white",
-        padding: "24px",
-        borderRadius: "20px",
+        padding: "28px",
+        borderRadius: "24px",
         marginTop: "20px",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+        textAlign: "left",
       }}
     >
-      <h2>Register Now</h2>
+      <h2
+        style={{
+          marginTop: 0,
+          marginBottom: "8px",
+          color: "#2563eb",
+          fontSize: "34px",
+        }}
+      >
+        🎟️ Register For Sports Day
+      </h2>
+
+      <p
+        style={{
+          color: "#64748b",
+          marginBottom: "20px",
+        }}
+      >
+        Registration opens from 2:00pm at
+        Kennington Park.
+        <br />
+        Choose your events and join a team.
+      </p>
 
       <div
         style={{
@@ -121,9 +139,9 @@ export default function RegisterForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           style={{
-            padding: "14px",
-            borderRadius: "10px",
-            border: "1px solid #d1d5db",
+            padding: "16px",
+            borderRadius: "12px",
+            border: "2px solid #e2e8f0",
           }}
         />
 
@@ -132,9 +150,9 @@ export default function RegisterForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={{
-            padding: "14px",
-            borderRadius: "10px",
-            border: "1px solid #d1d5db",
+            padding: "16px",
+            borderRadius: "12px",
+            border: "2px solid #e2e8f0",
           }}
         />
 
@@ -143,9 +161,9 @@ export default function RegisterForm() {
           value={mobile}
           onChange={(e) => setMobile(e.target.value)}
           style={{
-            padding: "14px",
-            borderRadius: "10px",
-            border: "1px solid #d1d5db",
+            padding: "16px",
+            borderRadius: "12px",
+            border: "2px solid #e2e8f0",
           }}
         />
 
@@ -154,9 +172,9 @@ export default function RegisterForm() {
           value={contactName}
           onChange={(e) => setContactName(e.target.value)}
           style={{
-            padding: "14px",
-            borderRadius: "10px",
-            border: "1px solid #d1d5db",
+            padding: "16px",
+            borderRadius: "12px",
+            border: "2px solid #e2e8f0",
           }}
         />
 
@@ -165,21 +183,33 @@ export default function RegisterForm() {
           value={contactNumber}
           onChange={(e) => setContactNumber(e.target.value)}
           style={{
-            padding: "14px",
-            borderRadius: "10px",
-            border: "1px solid #d1d5db",
+            padding: "16px",
+            borderRadius: "12px",
+            border: "2px solid #e2e8f0",
           }}
         />
 
-        <h3>Select Events</h3>
+        <h3
+          style={{
+            color: "#2563eb",
+            marginTop: "10px",
+          }}
+        >
+          Choose Your Events
+        </h3>
 
         {events.map((event) => (
           <div
             key={event.id}
             style={{
-              background: "#f8fafc",
-              padding: "12px",
-              borderRadius: "12px",
+              background: selectedEvents.includes(event.id)
+                ? "#dbeafe"
+                : "#f8fafc",
+              border: selectedEvents.includes(event.id)
+                ? "2px solid #2563eb"
+                : "2px solid #e5e7eb",
+              padding: "14px",
+              borderRadius: "14px",
               marginBottom: "8px",
             }}
           >
@@ -236,21 +266,25 @@ export default function RegisterForm() {
               "linear-gradient(135deg,#2563eb,#1d4ed8)",
             color: "white",
             border: "none",
-            padding: "14px",
-            borderRadius: "10px",
+            padding: "16px",
+            borderRadius: "14px",
             cursor: "pointer",
             fontWeight: "bold",
+            fontSize: "18px",
           }}
         >
-          Register
+          Register Now
         </button>
 
         {message && (
           <div
             style={{
-              padding: "12px",
+              padding: "16px",
               background: "#dcfce7",
-              borderRadius: "10px",
+              border: "2px solid #22c55e",
+              borderRadius: "12px",
+              color: "#166534",
+              fontWeight: "bold",
             }}
           >
             {message}
