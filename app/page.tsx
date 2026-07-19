@@ -1,5 +1,12 @@
 import RegisterForm from "../components/RegisterForm";
-import EventsList from "../componentsht: "100vh",
+import EventsList from "../components/EventsList";
+
+export default function Home() {
+  return (
+    <main
+      style={{
+        background: "#f8fafc",
+        minHeight: "100vh",
       }}
     >
       <div
@@ -22,7 +29,8 @@ import EventsList from "../componentsht: "100vh",
           <h1>Bariball Sports Day</h1>
 
           <p>
-            Join the competition. Build your team.
+            Join the competition.
+            Build your team.
             Have fun.
           </p>
         </div>
