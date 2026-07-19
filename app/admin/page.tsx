@@ -1,38 +1,38 @@
 import { supabase } from "../../lib/supabase";
 
 export default async function AdminPage() {
-  const { count: participantCount } = await supabase
+  const participants = await supabase
     .from("participants")
-    .select("*", {
-      count: "exact",
-      head: true,
-    });
+    .select("*");
 
-  const { count: eventCount } = await supabase
+  const events = await supabase
     .from("events")
-    .select("*", {
-      count: "exact",
-      head: true,
-    });
+    .select("*");
 
-  const { count: registrationCount } = await supabase
+  const registrations = await supabase
     .from("registration_events")
-    .select("*", {
-      count: "exact",
-      head: true,
-    });
+    .select("*");
 
-  const { count: teamCount } = await supabase
+  const teams = await supabase
     .from("teams")
-    .select("*", {
-      count: "exact",
-      head: true,
-    });
+    .select("*");
+
+  const participantCount =
+    participants.data?.length || 0;
+
+  const eventCount =
+    events.data?.length || 0;
+
+  const registrationCount =
+    registrations.data?.length || 0;
+
+  const teamCount =
+    teams.data?.length || 0;
 
   return (
     <main
       style={{
-        maxWidth: "800px",
+        maxWidth: "900px",
         margin: "0 auto",
         padding: "20px",
       }}
@@ -43,30 +43,49 @@ export default async function AdminPage() {
         style={{
           display: "grid",
           gridTemplateColumns:
-            "repeat(auto-fit,minmax(140px,1fr))",
+            "repeat(auto-fit,minmax(180px,1fr))",
           gap: "15px",
           marginTop: "20px",
         }}
       >
         <DashboardCard
           title="Participants"
-          value={participantCount || 0}
+          value={participantCount}
         />
 
         <DashboardCard
           title="Events"
-          value={eventCount || 0}
+          value={eventCount}
         />
 
         <DashboardCard
           title="Registrations"
-          value={registrationCount || 0}
+          value={registrationCount}
         />
 
         <DashboardCard
           title="Teams"
-          value={teamCount || 0}
+          value={teamCount}
         />
+      </div>
+
+      <div
+        style={{
+          marginTop: "30px",
+          background: "white",
+          padding: "20px",
+          borderRadius: "12px",
+        }}
+      >
+        <h2>Recent Participants</h2>
+
+        <ul>
+          {participants.data?.slice(0, 10).map((p) => (
+            <li key={p.id}>
+              {p.name}
+            </li>
+          ))}
+        </ul>
       </div>
     </main>
   );
@@ -83,8 +102,8 @@ function DashboardCard({
     <div
       style={{
         background: "white",
-        padding: "20px",
         borderRadius: "12px",
+        padding: "20px",
         boxShadow:
           "0 2px 6px rgba(0,0,0,0.1)",
       }}
