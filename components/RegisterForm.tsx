@@ -1,4 +1,38 @@
+"use client";
+
+import { useState } from "react";
+import { supabase } from "../lib/supabase";
+
 export default function RegisterForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [contactName, setContactName] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+
+  const [message, setMessage] = useState("");
+
+  async function register() {
+    const { error } = await supabase
+      .from("participants")
+      .insert([
+        {
+          name,
+          email,
+          mobile_number: mobile,
+          emergency_contact_name: contactName,
+          emergency_contact_number: contactNumber,
+        },
+      ]);
+
+    if (error) {
+      setMessage(error.message);
+      return;
+    }
+
+    setMessage("✅ Registration submitted");
+  }
+
   return (
     <div
       style={{
@@ -10,14 +44,45 @@ export default function RegisterForm() {
     >
       <h2>Register Now</h2>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-        <input placeholder="Full Name" />
-        <input placeholder="Email Address" />
-        <input placeholder="Mobile Number" />
-        <input placeholder="Emergency Contact Name" />
-        <input placeholder="Emergency Contact Number" />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+        }}
+      >
+        <input
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <input
+          placeholder="Email Address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          placeholder="Mobile Number"
+          value={mobile}
+          onChange={(e) => setMobile(e.target.value)}
+        />
+
+        <input
+          placeholder="Emergency Contact Name"
+          value={contactName}
+          onChange={(e) => setContactName(e.target.value)}
+        />
+
+        <input
+          placeholder="Emergency Contact Number"
+          value={contactNumber}
+          onChange={(e) => setContactNumber(e.target.value)}
+        />
 
         <button
+          onClick={register}
           style={{
             background: "#2563eb",
             color: "white",
@@ -29,6 +94,12 @@ export default function RegisterForm() {
         >
           Continue
         </button>
+
+        {message && (
+          <div>
+            {message}
+          </div>
+        )}
       </div>
     </div>
   );
