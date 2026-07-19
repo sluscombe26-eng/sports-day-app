@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 
 export default function RegisterForm() {
@@ -12,8 +12,26 @@ export default function RegisterForm() {
 
   const [message, setMessage] = useState("");
 
+  const [events, setEvents] = useState<any[]>([]);
+  const [selectedEvents, setSelectedEvents] = useState<string[]>([]);
+
+  useEffect(() => {
+    async function loadEvents() {
+      const { data } = await supabase
+        .from("events")
+        .select("*")
+        .order("name");
+
+      if (data) {
+        setEvents(data);
+      }
+    }
+
+    loadEvents();
+  }, []);
+
   async function register() {
-    const { error } = await supabase
+    const participant = await supabase
       .from("participants")
       .insert([
         {
@@ -23,11 +41,24 @@ export default function RegisterForm() {
           emergency_contact_name: contactName,
           emergency_contact_number: contactNumber,
         },
-      ]);
+      ])
+      .select()
+      .single();
 
-    if (error) {
-      setMessage(error.message);
+    if (participant.error) {
+      setMessage(participant.error.message);
       return;
+    }
+
+    for (const eventId of selectedEvents) {
+      await supabase
+        .from("registration_events")
+        .insert([
+          {
+            participant_id: participant.data.id,
+            event_id: eventId,
+          },
+        ]);
     }
 
     setMessage("✅ Registration submitted");
@@ -81,6 +112,40 @@ export default function RegisterForm() {
           onChange={(e) => setContactNumber(e.target.value)}
         />
 
+        <h3>Select Events</h3>
+
+        {events.map((event) => (
+          <label
+            key={event.id}
+            style={{
+              display: "block",
+              marginBottom: "8px",
+            }}
+          >
+            <input
+              type="checkbox"
+              value={event.id}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setSelectedEvents([
+                    ...selectedEvents,
+                    event.id,
+                  ]);
+                } else {
+                  setSelectedEvents(
+                    selectedEvents.filter(
+                      (id) => id !== event.id
+                    )
+                  );
+                }
+              }}
+            />
+
+            {" "}
+            {event.name}
+          </label>
+        ))}
+
         <button
           onClick={register}
           style={{
@@ -96,9 +161,7 @@ export default function RegisterForm() {
         </button>
 
         {message && (
-          <div>
-            {message}
-          </div>
+          <div>{message}</div>
         )}
       </div>
     </div>
