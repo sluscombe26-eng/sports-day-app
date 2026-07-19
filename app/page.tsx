@@ -17,7 +17,8 @@ export default function Home() {
         }}
       >
         <img
-  src="/poster.jpeg"="Baririball Academy Sports Day Poster"
+  src="/poster.jpeg"
+alt="Baririball Academy Sports Day Poster"
           style={{
             width: "100%",
             borderRadius: "24px",
