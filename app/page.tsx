@@ -11,28 +11,40 @@ export default function Home() {
     >
       <div
         style={{
-          maxWidth: "700px",
+          maxWidth: "800px",
           margin: "0 auto",
           padding: "20px",
         }}
       >
-        <div
+        <img
+          src="/poster.jpeg"
+          alt="Baririball Academy Sports Day Poster"
           style={{
-            background:
-              "linear-gradient(135deg,#2563eb,#1d4ed8)",
-            color: "white",
+            width: "100%",
             borderRadius: "24px",
-            padding: "30px",
             marginBottom: "20px",
             boxShadow:
-              "0 10px 25px rgba(37,99,235,0.25)",
+              "0 10px 30px rgba(0,0,0,0.15)",
+          }}
+        />
+
+        <div
+          style={{
+            background: "white",
+            borderRadius: "24px",
+            padding: "24px",
+            marginBottom: "20px",
+            boxShadow:
+              "0 2px 10px rgba(0,0,0,0.08)",
           }}
         >
           <h1
             style={{
-              margin: 0,
+              marginTop: 0,
+              marginBottom: "10px",
               fontSize: "42px",
               lineHeight: "1.1",
+              color: "#2563eb",
             }}
           >
             Baririball Academy's
@@ -42,9 +54,9 @@ export default function Home() {
 
           <p
             style={{
-              marginTop: "15px",
               fontSize: "20px",
               lineHeight: "1.5",
+              color: "#334155",
             }}
           >
             Join the competition.
@@ -53,36 +65,24 @@ export default function Home() {
             <br />
             Have fun.
           </p>
-        </div>
-
-        <div
-          style={{
-            background: "white",
-            borderRadius: "20px",
-            padding: "20px",
-            marginBottom: "20px",
-            boxShadow:
-              "0 2px 10px rgba(0,0,0,0.08)",
-          }}
-        >
-          <h2
-            style={{
-              marginTop: 0,
-            }}
-          >
-            Event Information
-          </h2>
 
           <div
             style={{
+              marginTop: "20px",
               display: "flex",
               flexDirection: "column",
               gap: "10px",
             }}
           >
-            <div>📅 Sports Day Date</div>
-            <div>📍 Kennington Park (by the outdoor gym)</div>
+            <div>📅 25 July</div>
+
+            <div>
+              📍 Kennington Park
+              (by the outdoor gym)
+            </div>
+
             <div>🏆 Individual & Team Events</div>
+
             <div>👥 Registration Open</div>
           </div>
         </div>
