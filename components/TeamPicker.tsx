@@ -26,53 +26,86 @@ export default function TeamPicker({
   return (
     <div
       style={{
-        background: "#f8fafc",
-        padding: "12px",
-        borderRadius: "10px",
-        marginBottom: "12px",
+        marginTop: "12px",
       }}
     >
-      <h4>Choose Team for {eventName}</h4>
+      <h4
+        style={{
+          color: "#2563eb",
+          marginBottom: "12px",
+        }}
+      >
+        Choose a team for {eventName}
+      </h4>
 
       {teams.map((team) => {
         const teamMembers = members.filter(
-          (m) => m.team_id === team.id
+          (member) => member.team_id === team.id
         );
 
         return (
           <div
             key={team.id}
+            onClick={() => onSelect(team.id)}
             style={{
-              border: "1px solid #ddd",
+              background:
+                selectedTeam === team.id
+                  ? "#dbeafe"
+                  : "white",
+              border:
+                selectedTeam === team.id
+                  ? "3px solid #2563eb"
+                  : "2px solid #e2e8f0",
+              borderRadius: "16px",
+              padding: "16px",
               marginBottom: "12px",
-              padding: "12px",
-              borderRadius: "8px",
-              background: "white",
+              cursor: "pointer",
+              textAlign: "left",
             }}
           >
-            <label>
-              <input
-                type="radio"
-                name={eventName}
-                checked={selectedTeam === team.id}
-                onChange={() => onSelect(team.id)}
-              />
-
-              {" "}
-              <strong>{team.team_name}</strong>
-            </label>
-
-            <div style={{ marginTop: "8px" }}>
-              {teamMembers.length} members
+            <div
+              style={{
+                fontSize: "20px",
+                fontWeight: "bold",
+                color: "#2563eb",
+                marginBottom: "8px",
+              }}
+            >
+              👥 {team.team_name}
             </div>
 
-            <ul>
-              {teamMembers.map((member) => (
-                <li key={member.participant_name}>
-                  {member.participant_name}
-                </li>
-              ))}
-            </ul>
+            <div
+              style={{
+                color: "#475569",
+                marginBottom: "10px",
+                fontWeight: "bold",
+              }}
+            >
+              {teamMembers.length} Members
+            </div>
+
+            {teamMembers.length > 0 ? (
+              <ul
+                style={{
+                  margin: 0,
+                  paddingLeft: "20px",
+                }}
+              >
+                {teamMembers.map((member) => (
+                  <li key={member.participant_name}>
+                    {member.participant_name}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div
+                style={{
+                  color: "#94a3b8",
+                }}
+              >
+                Be the first to join this team.
+              </div>
+            )}
           </div>
         );
       })}
