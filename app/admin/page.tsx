@@ -1,28 +1,45 @@
-export default function ExportPage() {
+import { supabase } from "../../lib/supabase";
+
+export default async function AdminPage() {
+  const participants = await supabase
+    .from("participants")
+    .select("*");
+
+  const events = await supabase
+    .from("events")
+    .select("*");
+
+  const registrations = await supabase
+    .from("registration_events")
+    .select("*");
+
+  const teams = await supabase
+    .from("teams")
+    .select("*");
+
   return (
-    <main
-      style={{
-        maxWidth: "900px",
-        margin: "0 auto",
-        padding: "20px",
-      }}
-    >
-      <h1>Export Registrations</h1>
+    <main style={{ padding: "20px" }}>
+      <h1>Sports Day Admin</h1>
 
-      <p>
-        Download all registrations as an Excel file.
-      </p>
+      <div>
+        <p>
+          Participants:{" "}
+          {participants.data?.length || 0}
+        </p>
 
-      /api/export: "inline-block",
-          background: "#2563eb",
-          color: "white",
-          padding: "12px 20px",
-          borderRadius: "8px",
-          textDecoration: "none",
-        }}
-      >
-        Download Excel Export
-      </a>
+        <p>
+          Events: {events.data?.length || 0}
+        </p>
+
+        <p>
+          Registrations:{" "}
+          {registrations.data?.length || 0}
+        </p>
+
+        <p>
+          Teams: {teams.data?.length || 0}
+        </p>
+      </div>
     </main>
   );
 }
