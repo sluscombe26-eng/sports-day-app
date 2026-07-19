@@ -3,23 +3,30 @@ import { supabase } from "../../lib/supabase";
 export default async function EventsPage() {
   const { data: events } = await supabase
     .from("events")
-    .select("*");
+    .select("*")
+    .order("name");
 
   return (
-    <main style={{ padding: "20px" }}>
+    <main
+      style={{
+        padding: "20px",
+        maxWidth: "700px",
+        margin: "0 auto",
+      }}
+    >
       <h1>Events</h1>
 
       {events?.map((event) => (
         <div
           key={event.id}
           style={{
-            padding: "12px",
-            marginBottom: "12px",
             background: "#f8fafc",
+            padding: "15px",
             borderRadius: "12px",
+            marginBottom: "10px",
           }}
         >
-          <strong>{event.name}</strong>
+          <h3>{event.name}</h3>
 
           <div>
             Capacity: {event.capacity}
