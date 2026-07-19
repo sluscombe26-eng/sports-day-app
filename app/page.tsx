@@ -1,12 +1,5 @@
 import RegisterForm from "../components/RegisterForm";
-import EventsList from "../components/EventsList";
-
-export default function Home() {
-  return (
-    <main
-      style={{
-        background: "#f8fafc",
-        minHeight: "100vh",
+import EventsList from "../componentsht: "100vh",
       }}
     >
       <div
@@ -24,39 +17,22 @@ export default function Home() {
             borderRadius: "24px",
             padding: "30px",
             marginBottom: "20px",
-            boxShadow:
-              "0 10px 25px rgba(37,99,235,0.25)",
           }}
         >
-          <h1
-            style={{
-              margin: 0,
-              fontSize: "38px",
-            }}
-          >
-            Bariball Sports Day
-          </h1>
+          <h1>Bariball Sports Day</h1>
 
-          <p
-            style={{
-              marginTop: "15px",
-              fontSize: "18px",
-            }}
-          >
-            Join the competition.
-            Build your team.
+          <p>
+            Join the competition. Build your team.
             Have fun.
           </p>
+        </div>
 
-          <a
-            href="#registration    <div
+        <div
           style={{
             background: "white",
             borderRadius: "20px",
             padding: "20px",
             marginBottom: "20px",
-            boxShadow:
-              "0 2px 10px rgba(0,0,0,0.08)",
           }}
         >
           <h2>Event Information</h2>
@@ -68,9 +44,7 @@ export default function Home() {
 
         <EventsList />
 
-        <div id="registration">
-          <RegisterForm />
-        </div>
+        <RegisterForm />
       </div>
     </main>
   );
