@@ -87,15 +87,24 @@ export default function RegisterForm() {
     }
 
     setMessage("✅ Registration submitted");
+
+    setName("");
+    setEmail("");
+    setMobile("");
+    setContactName("");
+    setContactNumber("");
+    setSelectedEvents([]);
+    setSelectedTeams({});
   }
 
   return (
     <div
       style={{
         background: "white",
-        padding: "20px",
-        borderRadius: "16px",
+        padding: "24px",
+        borderRadius: "20px",
         marginTop: "20px",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
       }}
     >
       <h2>Register Now</h2>
@@ -111,36 +120,69 @@ export default function RegisterForm() {
           placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          style={{
+            padding: "14px",
+            borderRadius: "10px",
+            border: "1px solid #d1d5db",
+          }}
         />
 
         <input
           placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          style={{
+            padding: "14px",
+            borderRadius: "10px",
+            border: "1px solid #d1d5db",
+          }}
         />
 
         <input
           placeholder="Mobile Number"
           value={mobile}
           onChange={(e) => setMobile(e.target.value)}
+          style={{
+            padding: "14px",
+            borderRadius: "10px",
+            border: "1px solid #d1d5db",
+          }}
         />
 
         <input
           placeholder="Emergency Contact Name"
           value={contactName}
           onChange={(e) => setContactName(e.target.value)}
+          style={{
+            padding: "14px",
+            borderRadius: "10px",
+            border: "1px solid #d1d5db",
+          }}
         />
 
         <input
           placeholder="Emergency Contact Number"
           value={contactNumber}
           onChange={(e) => setContactNumber(e.target.value)}
+          style={{
+            padding: "14px",
+            borderRadius: "10px",
+            border: "1px solid #d1d5db",
+          }}
         />
 
         <h3>Select Events</h3>
 
         {events.map((event) => (
-          <div key={event.id}>
+          <div
+            key={event.id}
+            style={{
+              background: "#f8fafc",
+              padding: "12px",
+              borderRadius: "12px",
+              marginBottom: "8px",
+            }}
+          >
             <label>
               <input
                 type="checkbox"
@@ -162,7 +204,9 @@ export default function RegisterForm() {
               />
 
               {" "}
-              {event.name} ({event.event_type})
+              <strong>{event.name}</strong>
+              {" "}
+              ({event.event_type})
             </label>
 
             {selectedEvents.includes(event.id) &&
@@ -188,22 +232,31 @@ export default function RegisterForm() {
         <button
           onClick={register}
           style={{
-            background: "#2563eb",
+            background:
+              "linear-gradient(135deg,#2563eb,#1d4ed8)",
             color: "white",
             border: "none",
-            padding: "12px",
-            borderRadius: "8px",
+            padding: "14px",
+            borderRadius: "10px",
             cursor: "pointer",
+            fontWeight: "bold",
           }}
         >
-          Continue
+          Register
         </button>
 
         {message && (
-          <div>{message}</div>
+          <div
+            style={{
+              padding: "12px",
+              background: "#dcfce7",
+              borderRadius: "10px",
+            }}
+          >
+            {message}
+          </div>
         )}
       </div>
     </div>
   );
 }
-
