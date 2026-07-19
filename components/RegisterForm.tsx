@@ -80,9 +80,19 @@ export default function RegisterForm() {
         ]);
     }
 
-    setMessage(
-      "🎉 You're in! Your registration has been submitted successfully."
-    );
+  setMessage(`
+🎉 Registration Complete!
+
+Baririball Academy's 3rd Sports Day
+
+📅 25 July 2026
+🕑 Starts at 2:00pm
+
+📍 Kennington Park
+(by the outdoor gym)
+
+See you there!
+`);
 
     setName("");
     setEmail("");
@@ -276,16 +286,49 @@ export default function RegisterForm() {
           Register Now
         </button>
 
-        {message && (
-          <div
-            style={{
-              padding: "16px",
-              background: "#dcfce7",
-              border: "2px solid #22c55e",
-              borderRadius: "12px",
-              color: "#166534",
-              fontWeight: "bold",
-            }}
+       {message && (
+  <div
+    style={{
+      padding: "24px",
+      background: "#dcfce7",
+      border: "3px solid #22c55e",
+      borderRadius: "20px",
+      color: "#166534",
+      textAlign: "left",
+      marginTop: "20px",
+    }}
+  >
+    <h3
+      style={{
+        marginTop: 0,
+        color: "#15803d",
+      }}
+    >
+      🎉 Registration Complete!
+    </h3>
+
+    <p>
+      Thank you for registering for
+      Baririball Academy's 3rd Sports Day.
+    </p>
+
+    <p>
+      📅 25 July 2026
+      <br />
+      🕑 Starts at 2:00pm
+      <br />
+      📍 Kennington Park (by the outdoor gym)
+    </p>
+
+    <p
+      style={{
+        fontWeight: "bold",
+      }}
+    >
+      See you there!
+    </p>
+  </div>
+)}
           >
             {message}
           </div>
