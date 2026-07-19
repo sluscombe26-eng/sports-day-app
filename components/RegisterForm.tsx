@@ -15,6 +15,7 @@ export default function RegisterForm() {
 
   const [events, setEvents] = useState<any[]>([]);
   const [teams, setTeams] = useState<any[]>([]);
+  const [teamMembers, setTeamMembers] = useState<any[]>([]);
 
   const [selectedEvents, setSelectedEvents] = useState<string[]>([]);
   const [selectedTeams, setSelectedTeams] = useState<
@@ -42,7 +43,13 @@ export default function RegisterForm() {
       }
     }
 
-    loadData();
+    loadData(const { data: membersData } = await supabase
+  .from("team_members")
+  .select("*");
+
+if (membersData) {
+  setTeamMembers(membersData);
+});
   }, []);
 
   async function register() {
