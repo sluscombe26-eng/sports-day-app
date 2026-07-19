@@ -1,3 +1,4 @@
+import EventsList from "../components/EventsList";
 import RegisterForm from "../components/RegisterForm";
 
 export default function Home() {
@@ -34,14 +35,7 @@ export default function Home() {
           borderRadius: "16px",
         }}
       >
-        <h2>Events</h2>
-
-        <ul>
-          <li>Event 1</li>
-          <li>Event 2</li>
-          <li>Event 3</li>
-          <li>Event 4</li>
-        </ul>
+<EventsList />
       </div>
 
       <RegisterForm />
