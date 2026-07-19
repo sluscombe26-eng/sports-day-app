@@ -309,7 +309,7 @@ See you there!
 
     <p>
       Thank you for registering for
-      Baririball Academy's 3rd Sports Day.
+      Baririball Academy&apos;s 3rd Sports Day.
     </p>
 
     <p>
@@ -329,11 +329,3 @@ See you there!
     </p>
   </div>
 )}
-          >
-            {message}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
