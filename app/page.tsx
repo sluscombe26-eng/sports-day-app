@@ -81,7 +81,7 @@ export default function Home() {
             }}
           >
             <div>📅 Sports Day Date</div>
-            <div>📍 Venue To Be Confirmed</div>
+            <div>📍 Kennington Park (by the outdoor gym)</div>
             <div>🏆 Individual & Team Events</div>
             <div>👥 Registration Open</div>
           </div>
