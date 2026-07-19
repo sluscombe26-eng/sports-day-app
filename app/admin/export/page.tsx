@@ -13,8 +13,9 @@ export default function ExportPage() {
         Download all registrations as an Excel file.
       </p>
 
-      <a
-        href="/api/export"
-        style={{
-          display: "inline-block",
-      
+      <p>
+        Export functionality coming soon.
+      </p>
+    </main>
+  );
+}
