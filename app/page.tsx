@@ -16,9 +16,7 @@ export default function Home() {
           padding: "20px",
         }}
       >
-        <img
-          src="/poster.jpeg"
-          alt="Baririball Academy Sports Day Poster"
+        /poster.jpeg="Baririball Academy Sports Day Poster"
           style={{
             width: "100%",
             borderRadius: "24px",
@@ -36,13 +34,14 @@ export default function Home() {
             marginBottom: "20px",
             boxShadow:
               "0 2px 10px rgba(0,0,0,0.08)",
+            textAlign: "left",
           }}
         >
           <h1
             style={{
               marginTop: 0,
               marginBottom: "10px",
-              fontSize: "42px",
+              fontSize: "48px",
               lineHeight: "1.1",
               color: "#2563eb",
             }}
@@ -54,36 +53,45 @@ export default function Home() {
 
           <p
             style={{
-              fontSize: "20px",
+              fontSize: "22px",
               lineHeight: "1.5",
               color: "#334155",
+              marginBottom: "25px",
             }}
           >
-            Join the competition.
+            Compete.
             <br />
-            Build your team.
+            Team Up.
             <br />
-            Have fun.
+            Have Fun.
           </p>
 
           <div
             style={{
-              marginTop: "20px",
               display: "flex",
               flexDirection: "column",
-              gap: "10px",
+              gap: "12px",
+              fontSize: "18px",
             }}
           >
-            <div>📅 25 July</div>
+            <div>📅 25 July 2026</div>
+
+            <div>
+              🕑 Registration from 2:00pm
+            </div>
 
             <div>
               📍 Kennington Park
               (by the outdoor gym)
             </div>
 
-            <div>🏆 Individual & Team Events</div>
+            <div>
+              🏆 Individual & Team Events
+            </div>
 
-            <div>👥 Registration Open</div>
+            <div>
+              👥 Registration Open
+            </div>
           </div>
         </div>
 
