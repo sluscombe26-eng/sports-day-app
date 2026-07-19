@@ -9,6 +9,8 @@ export default function RegisterForm() {
   const [mobile, setMobile] = useState("");
   const [contactName, setContactName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+  const [teams, setTeams] = useState<any[]>([]);
+  const [selectedTeam, setSelectedTeam] = useState("");
 
   const [message, setMessage] = useState("");
 
