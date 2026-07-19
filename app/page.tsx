@@ -1,44 +1,102 @@
-import EventsList from "../components/EventsList";
-import RegisterForm from "../components/RegisterForm";
+import { supabase } from "../../lib/supabase";
 
-export default function Home() {
+export default async function AdminPage() {
+  const participants = await supabase
+    .from("participants")
+    .select("*");
+
+  const events = await supabase
+    .from("events")
+    .select("*");
+
+  const registrations = await supabase
+    .from("registration_events")
+    .select("*");
+
+  const teams = await supabase
+    .from("teams")
+    .select("*");
+
+  const participantCount =
+    participants.data?.length || 0;
+
+  const eventCount =
+    events.data?.length || 0;
+
+  const registrationCount =
+    registrations.data?.length || 0;
+
+  const teamCount =
+    teams.data?.length || 0;
+
   return (
     <main
       style={{
-        maxWidth: "500px",
+        maxWidth: "900px",
         margin: "0 auto",
         padding: "20px",
-        background: "#f8fafc",
-        minHeight: "100vh",
       }}
     >
-      <div
-        style={{
-          background: "#2563eb",
-          color: "white",
-          padding: "40px 20px",
-          borderRadius: "20px",
-        }}
-      >
-        <h1>Sports Day 2026</h1>
-
-        <p>
-          Registration is now open
-        </p>
-      </div>
+      <h1>Sports Day Admin</h1>
 
       <div
         style={{
-          background: "white",
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(auto-fit,minmax(180px,1fr))",
+          gap: "15px",
           marginTop: "20px",
-          padding: "20px",
-          borderRadius: "16px",
         }}
       >
-<EventsList />
-      </div>
+        <DashboardCard
+          title="Participants"
+          value={participantCount}
+        />
 
-      <RegisterForm />
+        <DashboardCard
+          title="Events"
+          value={eventCount}
+        />
+
+        <DashboardCard
+          title="Registrations"
+          value={registrationCount}
+        />
+
+        <DashboardCard
+          title="Teams"
+          value={teamCount}
+        />
+      </div>
     </main>
+  );
+}
+
+function DashboardCard({
+  title,
+  value,
+}: {
+  title: string;
+  value: number;
+}) {
+  return (
+    <div
+      style={{
+        background: "white",
+        borderRadius: "12px",
+        padding: "20px",
+      }}
+    >
+      <div>{title}</div>
+
+      <div
+        style={{
+          fontSize: "32px",
+          fontWeight: "bold",
+        }}
+      >
+        {value}
+      </div>
+    </div>
   );
 }
