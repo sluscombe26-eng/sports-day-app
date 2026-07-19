@@ -4,34 +4,42 @@ type Team = {
 };
 
 type Props = {
+  eventName: string;
   teams: Team[];
   selectedTeam: string;
-  setSelectedTeam: (id: string) => void;
+  onSelect: (teamId: string) => void;
 };
 
 export default function TeamPicker({
+  eventName,
   teams,
   selectedTeam,
-  setSelectedTeam,
+  onSelect,
 }: Props) {
   return (
-    <div>
-      <h3>Choose Team</h3>
+    <div
+      style={{
+        background: "#f8fafc",
+        padding: "12px",
+        borderRadius: "10px",
+        marginBottom: "12px",
+      }}
+    >
+      <h4>Choose Team for {eventName}</h4>
 
       {teams.map((team) => (
         <label
           key={team.id}
           style={{
             display: "block",
-            marginBottom: "10px",
+            marginBottom: "8px",
           }}
         >
           <input
             type="radio"
+            name={eventName}
             checked={selectedTeam === team.id}
-            onChange={() =>
-              setSelectedTeam(team.id)
-            }
+            onChange={() => onSelect(team.id)}
           />
 
           {" "}
