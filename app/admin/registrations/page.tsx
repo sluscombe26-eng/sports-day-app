@@ -8,14 +8,6 @@ export default async function RegistrationsPage() {
       ascending: false,
     });
 
-  const registrations = await supabase
-    .from("registration_events")
-    .select(`
-      *,
-      events(name),
-      teams(team_name)
-    `);
-
   return (
     <main
       style={{
@@ -45,20 +37,11 @@ export default async function RegistrationsPage() {
           <div>{participant.mobile_number}</div>
 
           <div>
-            Emergency Contact:
-            {" "}
+            Emergency Contact:{" "}
             {participant.emergency_contact_name}
           </div>
-
-          <h4 style={{ marginTop: "12px" }}>
-            Events
-          </h4>
-
-          <ul>
-            {(registrations.data || [])
-              .filter(
-                (registration) =>
-                  registration.participant_id ===
-                  participant.id
-              )
-              .
+        </div>
+      ))}
+    </main>
+  );
+}
