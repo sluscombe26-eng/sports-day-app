@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
+import TeamPicker from "./TeamPicker";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -9,27 +10,39 @@ export default function RegisterForm() {
   const [mobile, setMobile] = useState("");
   const [contactName, setContactName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
-  const [teams, setTeams] = useState<any[]>([]);
-  const [selectedTeam, setSelectedTeam] = useState("");
 
   const [message, setMessage] = useState("");
 
   const [events, setEvents] = useState<any[]>([]);
+  const [teams, setTeams] = useState<any[]>([]);
+
   const [selectedEvents, setSelectedEvents] = useState<string[]>([]);
+  const [selectedTeams, setSelectedTeams] = useState<
+    Record<string, string>
+  >({});
 
   useEffect(() => {
-    async function loadEvents() {
-      const { data } = await supabase
+    async function loadData() {
+      const { data: eventsData } = await supabase
         .from("events")
         .select("*")
         .order("name");
 
-      if (data) {
-        setEvents(data);
+      if (eventsData) {
+        setEvents(eventsData);
+      }
+
+      const { data: teamsData } = await supabase
+        .from("teams")
+        .select("*")
+        .order("team_name");
+
+      if (teamsData) {
+        setTeams(teamsData);
       }
     }
 
-    loadEvents();
+    loadData();
   }, []);
 
   async function register() {
@@ -59,6 +72,7 @@ export default function RegisterForm() {
           {
             participant_id: participant.data.id,
             event_id: eventId,
+            team_id: selectedTeams[eventId] || null,
           },
         ]);
     }
@@ -117,35 +131,50 @@ export default function RegisterForm() {
         <h3>Select Events</h3>
 
         {events.map((event) => (
-          <label
-            key={event.id}
-            style={{
-              display: "block",
-              marginBottom: "8px",
-            }}
-          >
-            <input
-              type="checkbox"
-              value={event.id}
-              onChange={(e) => {
-                if (e.target.checked) {
-                  setSelectedEvents([
-                    ...selectedEvents,
-                    event.id,
-                  ]);
-                } else {
-                  setSelectedEvents(
-                    selectedEvents.filter(
-                      (id) => id !== event.id
-                    )
-                  );
-                }
-              }}
-            />
+          <div key={event.id}>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedEvents.includes(event.id)}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setSelectedEvents([
+                      ...selectedEvents,
+                      event.id,
+                    ]);
+                  } else {
+                    setSelectedEvents(
+                      selectedEvents.filter(
+                        (id) => id !== event.id
+                      )
+                    );
+                  }
+                }}
+              />
 
-            {" "}
-            {event.name}
-          </label>
+              {" "}
+              {event.name}
+              {" "}
+              ({event.event_type})
+            </label>
+
+            {selectedEvents.includes(event.id) &&
+              event.event_type === "team" && (
+                <TeamPicker
+                  eventName={event.name}
+                  teams={teams}
+                  selectedTeam={
+                    selectedTeams[event.id] || ""
+                  }
+                  onSelect={(teamId) => {
+                    setSelectedTeams({
+                      ...selectedTeams,
+                      [event.id]: teamId,
+                    });
+                  }}
+                />
+              )}
+          </div>
         ))}
 
         <button
@@ -169,4 +198,3 @@ export default function RegisterForm() {
     </div>
   );
 }
-
