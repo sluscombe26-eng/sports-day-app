@@ -41,15 +41,17 @@ export default function RegisterForm() {
       if (teamsData) {
         setTeams(teamsData);
       }
+
+      const { data: membersData } = await supabase
+        .from("team_members")
+        .select("*");
+
+      if (membersData) {
+        setTeamMembers(membersData);
+      }
     }
 
-    loadData(const { data: membersData } = await supabase
-  .from("team_members")
-  .select("*");
-
-if (membersData) {
-  setTeamMembers(membersData);
-});
+    loadData();
   }, []);
 
   async function register() {
@@ -160,27 +162,25 @@ if (membersData) {
               />
 
               {" "}
-              {event.name}
-              {" "}
-              ({event.event_type})
+              {event.name} ({event.event_type})
             </label>
 
             {selectedEvents.includes(event.id) &&
               event.event_type === "team" && (
-               <TeamPicker
-  eventName={event.name}
-  teams={teams}
-  members={teamMembers}
-  selectedTeam={
-    selectedTeams[event.id] || ""
-  }
-  onSelect={(teamId) => {
-    setSelectedTeams({
-      ...selectedTeams,
-      [event.id]: teamId,
-    });
-  }}
-/>
+                <TeamPicker
+                  eventName={event.name}
+                  teams={teams}
+                  members={teamMembers}
+                  selectedTeam={
+                    selectedTeams[event.id] || ""
+                  }
+                  onSelect={(teamId) => {
+                    setSelectedTeams({
+                      ...selectedTeams,
+                      [event.id]: teamId,
+                    });
+                  }}
+                />
               )}
           </div>
         ))}
@@ -206,4 +206,3 @@ if (membersData) {
     </div>
   );
 }
-
