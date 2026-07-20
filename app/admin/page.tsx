@@ -96,14 +96,28 @@ export default async function AdminPage() {
             color: "#2563eb",
           }}
         >
-          Quick Links
+          Navigation
         </h2>
 
-        <p>👥 Registration Management: /admin/registrations</p>
+        <p>
+          👥 Registrations:
+          {" "}
+          /admin/registrations
+            /admin/registrations
+          </a>
+        </p>
 
-        <p>🏆 Event Statistics: /admin/events</p>
+        <p>
+          🏆 Events:
+          {" "}
+          /admin/events
+        </p>
 
-        <p>📊 Export Registrations: /admin/export</p>
+        <p>
+          📊 Export:
+          {" "}
+          /admin/export
+        </p>
       </div>
     </main>
   );
