@@ -48,7 +48,18 @@ export default function RegisterForm() {
     loadData();
   }, []);
 
-  async function register() {
+ async function register() {
+  const existingParticipant = await supabase
+    .from("participants")
+    .select("*")
+    .eq("email", email)
+    .maybeSingle();
+
+  let participantId;
+
+  if (existingParticipant.data) {
+    participantId = existingParticipant.data.id;
+  } else {
     const participant = await supabase
       .from("participants")
       .insert([
@@ -68,17 +79,29 @@ export default function RegisterForm() {
       return;
     }
 
-    for (const eventId of selectedEvents) {
+    participantId = participant.data.id;
+  }
+
+  for (const eventId of selectedEvents) {
+    const existingRegistration = await supabase
+      .from("registration_events")
+      .select("*")
+      .eq("participant_id", participantId)
+      .eq("event_id", eventId)
+      .maybeSingle();
+
+    if (!existingRegistration.data) {
       await supabase
         .from("registration_events")
         .insert([
           {
-            participant_id: participant.data.id,
+            participant_id: participantId,
             event_id: eventId,
             team_id: selectedTeams[eventId] || null,
           },
         ]);
     }
+  }
 
     setMessage("success");
 
