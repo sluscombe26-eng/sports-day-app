@@ -96,28 +96,16 @@ export default async function AdminPage() {
             color: "#2563eb",
           }}
         >
-          Navigation
+          Administration Pages
         </h2>
 
-        <p>
-          👥 Registrations:
-          {" "}
-          /admin/registrations
-            /admin/registrations
-          </a>
-        </p>
+        <p>👥 Registrations: /admin/registrations</p>
 
-        <p>
-          🏆 Events:
-          {" "}
-          /admin/events
-        </p>
+        <p>🏆 Events: /admin/events</p>
 
-        <p>
-          📊 Export:
-          {" "}
-          /admin/export
-        </p>
+        <p>📊 Export: /admin/export</p>
+
+        <p>✅ Check In: /admin/checkin</p>
       </div>
     </main>
   );
