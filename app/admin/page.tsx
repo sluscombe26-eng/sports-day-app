@@ -96,16 +96,58 @@ export default async function AdminPage() {
             color: "#2563eb",
           }}
         >
-          Administration Pages
+          Quick Actions
         </h2>
 
-        <p>👥 Registrations: /admin/registrations</p>
+        <div style={{ marginBottom: "16px" }}>
+          <strong>
+            👥 Registration Management
+          </strong>
+          <div>
+            View participants, contact details,
+            emergency contacts and event entries.
+          </div>
+          <div>
+            Path: /admin/registrations
+          </div>
+        </div>
 
-        <p>🏆 Events: /admin/events</p>
+        <div style={{ marginBottom: "16px" }}>
+          <strong>
+            🏆 Event Statistics
+          </strong>
+          <div>
+            See registrations by event and
+            participant lists.
+          </div>
+          <div>
+            Path: /admin/events
+          </div>
+        </div>
 
-        <p>📊 Export: /admin/export</p>
+        <div style={{ marginBottom: "16px" }}>
+          <strong>
+            📊 Export Registrations
+          </strong>
+          <div>
+            Download registration data to Excel.
+          </div>
+          <div>
+            Path: /admin/export
+          </div>
+        </div>
 
-        <p>✅ Check In: /admin/checkin</p>
+        <div>
+          <strong>
+            ✅ Event Day Check-In
+          </strong>
+          <div>
+            Quickly find participants on the day.
+          </div>
+          <div>
+            Path: /admin/checkin
+          </div>
+        </div>
       </div>
     </main>
   );
