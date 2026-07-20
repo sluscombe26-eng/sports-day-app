@@ -32,10 +32,21 @@ export default async function RegistrationsPage() {
         👥 Registration Management
       </h1>
 
+      <p
+        style={{
+          color: "#64748b",
+          marginBottom: "24px",
+        }}
+      >
+        View registration details, contact
+        information and event entries.
+      </p>
+
       {participants.data?.map((participant) => {
         const participantRegistrations =
           (registrations.data || []).filter(
-            (r) => r.participant_id === participant.id
+            (r) =>
+              r.participant_id === participant.id
           );
 
         return (
@@ -59,16 +70,29 @@ export default async function RegistrationsPage() {
               {participant.name}
             </h2>
 
-            <div>
+            <div
+              style={{
+                marginBottom: "6px",
+              }}
+            >
               📧 {participant.email}
             </div>
 
-            <div>
+            <div
+              style={{
+                marginBottom: "6px",
+              }}
+            >
               📱 {participant.mobile_number}
             </div>
 
-            <div style={{ marginTop: "8px" }}>
-              🚨 Emergency Contact:{" "}
+            <div
+              style={{
+                marginBottom: "6px",
+              }}
+            >
+              🚨 Emergency Contact:
+              {" "}
               {participant.emergency_contact_name}
             </div>
 
@@ -78,29 +102,53 @@ export default async function RegistrationsPage() {
 
             <h3
               style={{
-                marginTop: "20px",
                 color: "#2563eb",
+                marginTop: "20px",
               }}
             >
               Events Entered
             </h3>
 
             {participantRegistrations.length === 0 ? (
-              <p>No event registrations found.</p>
+              <p>No events selected.</p>
             ) : (
-              <ul>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "8px",
+                }}
+              >
                 {participantRegistrations.map(
                   (registration) => (
-                    <li key={registration.id}>
+                    <div
+                      key={registration.id}
+                      style={{
+                        background: "#f8fafc",
+                        padding: "12px",
+                        borderRadius: "12px",
+                        border:
+                          "1px solid #e2e8f0",
+                      }}
+                    >
+                      🏆{" "}
                       {registration.events?.name}
 
-                      {registration.teams?.team_name
-                        ? ` - ${registration.teams.team_name}`
-                        : ""}
-                    </li>
+                      {registration.teams
+                        ?.team_name && (
+                        <>
+                          {" "}
+                          — 👥{" "}
+                          {
+                            registration.teams
+                              .team_name
+                          }
+                        </>
+                      )}
+                    </div>
                   )
                 )}
-              </ul>
+              </div>
             )}
           </div>
         );
