@@ -90,9 +90,22 @@ export default function RegisterForm() {
       .eq("event_id", eventId)
       .maybeSingle();
 
-    if (!existingRegistration.data) {
-      await supabase
-        .from("registration_events")
+ if (!existingRegistration.data) {
+  const result = await supabase
+    .from("registration_events")
+    .insert([
+      {
+        participant_id: participantId,
+        event_id: eventId,
+        team_id: selectedTeams[eventId] || null,
+      },
+    ]);
+
+  if (result.error) {
+    setMessage(result.error.message);
+    return;
+  }
+}
         .insert([
           {
             participant_id: participantId,
@@ -142,7 +155,7 @@ export default function RegisterForm() {
           marginBottom: "20px",
         }}
       >
-        Registration opens from 2:00pm at
+        Register on the day from 2:00pm at
         Kennington Park.
         <br />
         Choose your events and join a team.
