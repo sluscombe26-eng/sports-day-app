@@ -48,75 +48,47 @@ export default function RegisterForm() {
     loadData();
   }, []);
 
- async function register() {
-  const existingParticipant = await supabase
+async function register() {
+  const participant = await supabase
     .from("participants")
-    .select("*")
-    .eq("email", email)
-    .maybeSingle();
+    .insert([
+      {
+        name,
+        email,
+        mobile_number: mobile,
+        emergency_contact_name: contactName,
+        emergency_contact_number: contactNumber,
+      },
+    ])
+    .select()
+    .single();
 
-  let participantId;
-
-  if (existingParticipant.data) {
-    participantId = existingParticipant.data.id;
-  } else {
-    const participant = await supabase
-      .from("participants")
-      .insert([
-        {
-          name,
-          email,
-          mobile_number: mobile,
-          emergency_contact_name: contactName,
-          emergency_contact_number: contactNumber,
-        },
-      ])
-      .select()
-      .single();
-
-    if (participant.error) {
-      setMessage(participant.error.message);
-      return;
-    }
-
-    participantId = participant.data.id;
+  if (participant.error) {
+    setMessage(participant.error.message);
+    return;
   }
 
   for (const eventId of selectedEvents) {
-    const existingRegistration = await supabase
+    await supabase
       .from("registration_events")
-      .select("*")
-      .eq("participant_id", participantId)
-      .eq("event_id", eventId)
-      .maybeSingle();
-
-if (!existingRegistration.data) {
-  const result = await supabase
-    .from("registration_events")
-    .insert([
-      {
-        participant_id: participantId,
-        event_id: eventId,
-        team_id: selectedTeams[eventId] || null,
-      },
-    ]);
-
-  if (result.error) {
-    setMessage(result.error.message);
-    return;
+      .insert([
+        {
+          participant_id: participant.data.id,
+          event_id: eventId,
+          team_id: selectedTeams[eventId] || null,
+        },
+      ]);
   }
-}
-}
 
-setMessage("success");
+  setMessage("success");
 
-setName("");
-setEmail("");
-setMobile("");
-setContactName("");
-setContactNumber("");
-setSelectedEvents([]);
-setSelectedTeams({});
+  setName("");
+  setEmail("");
+  setMobile("");
+  setContactName("");
+  setContactNumber("");
+  setSelectedEvents([]);
+  setSelectedTeams({});
 }
   return (
     <div
