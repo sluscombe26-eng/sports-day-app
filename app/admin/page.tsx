@@ -99,25 +99,11 @@ export default async function AdminPage() {
           Quick Links
         </h2>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "12px",
-          }}
-        >
-          /admin/registrations
-            👥 Registration Management
-          </a>
+        <p>👥 Registration Management: /admin/registrations</p>
 
-          /admin/events
-            🏆 Event Statistics
-          </a>
+        <p>🏆 Event Statistics: /admin/events</p>
 
-          /export">
-            📊 Export Registrations
-          </a>
-        </div>
+        <p>📊 Export Registrations: /admin/export</p>
       </div>
     </main>
   );
