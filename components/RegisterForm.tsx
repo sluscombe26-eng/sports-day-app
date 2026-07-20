@@ -90,7 +90,7 @@ export default function RegisterForm() {
       .eq("event_id", eventId)
       .maybeSingle();
 
- if (!existingRegistration.data) {
+if (!existingRegistration.data) {
   const result = await supabase
     .from("registration_events")
     .insert([
@@ -106,27 +106,18 @@ export default function RegisterForm() {
     return;
   }
 }
-        .insert([
-          {
-            participant_id: participantId,
-            event_id: eventId,
-            team_id: selectedTeams[eventId] || null,
-          },
-        ]);
-    }
-  }
+}
 
-    setMessage("success");
+setMessage("success");
 
-    setName("");
-    setEmail("");
-    setMobile("");
-    setContactName("");
-    setContactNumber("");
-    setSelectedEvents([]);
-    setSelectedTeams({});
-  }
-
+setName("");
+setEmail("");
+setMobile("");
+setContactName("");
+setContactNumber("");
+setSelectedEvents([]);
+setSelectedTeams({});
+}
   return (
     <div
       style={{
