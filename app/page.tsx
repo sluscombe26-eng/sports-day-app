@@ -16,7 +16,9 @@ export default function Home() {
           padding: "20px",
         }}
       >
-        /poster.jpeg="Baririball Academy Sports Day Poster"
+        <img
+          src="/poster.jpeg"
+          alt="Baririball Academy Sports Day Poster"
           style={{
             width: "100%",
             borderRadius: "24px",
@@ -30,18 +32,7 @@ export default function Home() {
           style={{
             background: "white",
             borderRadius: "24px",
-            padding: "24px",
-            marginBottom: "20px",
-            boxShadow:
-              "0 2px 10px rgba(0,0,0,0.08)",
-            textAlign: "left",
-          }}
-        >
-          <h1
-            style={{
-              marginTop: 0,
-              marginBottom: "10px",
-              fontSize: "48px",
+                 fontSize: "48px",
               lineHeight: "1.1",
               color: "#2563eb",
             }}
