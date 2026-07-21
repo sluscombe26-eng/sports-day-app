@@ -16,9 +16,7 @@ export default function Home() {
           padding: "20px",
         }}
       >
-        <img
-          src="/poster.jpeg"
-          alt="Baririball Academy Sports Day Poster"
+        /poster.jpeg="Baririball Academy Sports Day Poster"
           style={{
             width: "100%",
             borderRadius: "24px",
@@ -33,7 +31,18 @@ export default function Home() {
             background: "white",
             borderRadius: "24px",
             padding: "24px",
-            marginBottom: "20              lineHeight: "1.1",
+            marginBottom: "20px",
+            boxShadow:
+              "0 2px 10px rgba(0,0,0,0.08)",
+            textAlign: "left",
+          }}
+        >
+          <h1
+            style={{
+              marginTop: 0,
+              marginBottom: "10px",
+              fontSize: "48px",
+              lineHeight: "1.1",
               color: "#2563eb",
             }}
           >
@@ -42,46 +51,76 @@ export default function Home() {
             3rd Sports Day
           </h1>
 
-          <p
+          <h2
             style={{
-              fontSize: "22px",
-              lineHeight: "1.5",
-              color: "#334155",
-              marginBottom: "25px",
+              marginTop: 0,
+              color: "#64748b",
             }}
           >
-            Compete.
-            <br />
-            Team Up.
-            <br />
-            Have Fun.
+            Hosted by Vanity Von Glow
+          </h2>
+
+          <p
+            style={{
+              fontSize: "18px",
+              lineHeight: "1.6",
+              color: "#334155",
+            }}
+          >
+            Join us for an afternoon of fun, competition and community at
+            Kennington Park.
+          </p>
+
+          <p
+            style={{
+              fontSize: "18px",
+              lineHeight: "1.6",
+              color: "#334155",
+            }}
+          >
+            A mix of individual and team events are available – sign up now
+            using the form below.
           </p>
 
           <div
             style={{
+              background: "#f8fafc",
+              border: "2px solid #e2e8f0",
+              borderRadius: "16px",
+              padding: "20px",
+              marginTop: "20px",
               display: "flex",
               flexDirection: "column",
               gap: "12px",
-              fontSize: "18px",
             }}
           >
-            <div>📅 25 July 2026</div>
-
             <div>
-              🕑 Registration from 2:00pm
+              🏃 Online registration closes at 11:00am on Saturday
             </div>
 
             <div>
-              📍 Kennington Park
-              (by the outdoor gym)
+              🕑 Additional event registrations will be available in person from
+              2:00pm
             </div>
 
             <div>
-              🏆 Individual & Team Events
+              👥 Team allocations may change depending on participation numbers
             </div>
 
             <div>
-              👥 Registration Open
+              🥤 Bring food and drinks to keep you fuelled!
+            </div>
+
+            <div>
+              🎉 Bring your friends and supporters
+            </div>
+
+            <div>
+              🏅 Medals available across a range of events
+            </div>
+
+            <div>
+              🔫 Don't be late – the starting gun goes off at 3:00pm sharp!
             </div>
           </div>
         </div>
