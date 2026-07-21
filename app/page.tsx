@@ -69,7 +69,7 @@ export default function Home() {
               color: "#334155",
             }}
           >
-            Join us for an afternoon of fun, competition and community at
+            Join me for an afternoon of fun, competition and celebration at
             Kennington Park.
           </p>
 
@@ -80,7 +80,7 @@ export default function Home() {
               color: "#334155",
             }}
           >
-            A mix of individual and team events are available – sign up now
+            A mix of individual and team events – sign up now
             using the form below.
           </p>
 
@@ -102,7 +102,7 @@ export default function Home() {
 
             <div>
               🕑 Additional event registrations will be available in person from
-              2:00pm
+              2:00pm on Saturday
             </div>
 
             <div>
@@ -114,11 +114,11 @@ export default function Home() {
             </div>
 
             <div>
-              🎉 Bring your friends and supporters
+              🎉 Bring your friends and fans
             </div>
 
             <div>
-              🏅 Medals available across a range of events
+              🏅 Medals and prizes will be awarded
             </div>
 
             <div>
