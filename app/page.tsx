@@ -15,30 +15,22 @@ export default function Home() {
           margin: "0 auto",
           padding: "20px",
         }}
-    <img
-  src="/poster.jpeg"
-  alt="Baririball Academy Sports Day Poster"
-  style={{
-    width: "100%",
-    borderRadius: "24px",
-    marginBottom: "20px",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-  }}
-/>
+      >
+        <img
+          src="/poster.jpeg"
+          alt="Baririball Academy Sports Day Poster"
+          style={{
+            width: "100%",
+            borderRadius: "24px",
+            marginBottom: "20px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+          }}
+        />
+
         <div
           style={{
             background: "white",
-            borderRadius: "24px",
-            padding: "24px",
-            marginBottom: "20px",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
-            textAlign: "left",
-          }}
-        >
-          <h1
-            style={{
-              marginTop: 0,
-              marginBottom: "8px",
+            borderRadius: ": "6px",
               fontSize: "48px",
               lineHeight: "1.1",
               color: "#2563eb",
@@ -54,7 +46,6 @@ export default function Home() {
               marginTop: 0,
               marginBottom: "20px",
               color: "#64748b",
-              fontSize: "24px",
             }}
           >
             Hosted by Vanity Von Glow
@@ -67,8 +58,8 @@ export default function Home() {
               color: "#334155",
             }}
           >
-            Join us for an afternoon of fun, competition and
-            community at Kennington Park.
+            Join us for an afternoon of fun, competition and community at
+            Kennington Park.
           </p>
 
           <p
@@ -78,7 +69,18 @@ export default function Home() {
               color: "#334155",
             }}
           >
-            A mix of individual and team events are available.
+            A mix of individual and team events are available – sign up now
+            using the form below.
+          </p>
+
+          <p
+            style={{
+              fontSize: "18px",
+              lineHeight: "1.6",
+              color: "#334155",
+            }}
+          >
+            Online registration closes at <strong>11:00am on Saturday</strong>.
           </p>
 
           <p
@@ -89,14 +91,8 @@ export default function Home() {
               marginBottom: "24px",
             }}
           >
-            Sign up for events below.
-            <br />
-            <br />
-            Online registration closes at
-            <strong> 11:00am on Saturday</strong>.
-            <br />
-            From <strong>2:00pm</strong>, additional event
-            registrations will be available in person at the park.
+            From <strong>2:00pm</strong>, additional event registrations will be
+            available in person in the park.
           </p>
 
           <div
@@ -115,13 +111,12 @@ export default function Home() {
             </div>
 
             <div>
-              🕑 Additional event registrations will be available
-              in person from 2:00pm
+              🕑 Additional event registrations will be available in person from
+              2:00pm
             </div>
 
             <div>
-              👥 Team allocations may change depending on
-              participation numbers
+              👥 Team allocations may change depending on participation numbers
             </div>
 
             <div>
@@ -137,8 +132,7 @@ export default function Home() {
             </div>
 
             <div>
-              🔫 Don't be late – the starting gun goes off at
-              3:00pm sharp!
+              🔫 Don't be late – the starting gun goes off at 3:00pm sharp!
             </div>
           </div>
         </div>
