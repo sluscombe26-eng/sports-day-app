@@ -23,16 +23,17 @@ export default function Home() {
             width: "100%",
             borderRadius: "24px",
             marginBottom: "20px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+            boxShadow:
+              "0 10px 30px rgba(0,0,0,0.15)",
           }}
         />
 
         <div
           style={{
             background: "white",
-            borderRadius: ": "6px",
-              fontSize: "48px",
-              lineHeight: "1.1",
+            borderRadius: "24px",
+            padding: "24px",
+            marginBottom: "20              lineHeight: "1.1",
               color: "#2563eb",
             }}
           >
@@ -41,98 +42,46 @@ export default function Home() {
             3rd Sports Day
           </h1>
 
-          <h2
-            style={{
-              marginTop: 0,
-              marginBottom: "20px",
-              color: "#64748b",
-            }}
-          >
-            Hosted by Vanity Von Glow
-          </h2>
-
           <p
             style={{
-              fontSize: "18px",
-              lineHeight: "1.6",
+              fontSize: "22px",
+              lineHeight: "1.5",
               color: "#334155",
+              marginBottom: "25px",
             }}
           >
-            Join us for an afternoon of fun, competition and community at
-            Kennington Park.
-          </p>
-
-          <p
-            style={{
-              fontSize: "18px",
-              lineHeight: "1.6",
-              color: "#334155",
-            }}
-          >
-            A mix of individual and team events are available – sign up now
-            using the form below.
-          </p>
-
-          <p
-            style={{
-              fontSize: "18px",
-              lineHeight: "1.6",
-              color: "#334155",
-            }}
-          >
-            Online registration closes at <strong>11:00am on Saturday</strong>.
-          </p>
-
-          <p
-            style={{
-              fontSize: "18px",
-              lineHeight: "1.6",
-              color: "#334155",
-              marginBottom: "24px",
-            }}
-          >
-            From <strong>2:00pm</strong>, additional event registrations will be
-            available in person in the park.
+            Compete.
+            <br />
+            Team Up.
+            <br />
+            Have Fun.
           </p>
 
           <div
             style={{
-              background: "#f8fafc",
-              border: "2px solid #e2e8f0",
-              borderRadius: "16px",
-              padding: "20px",
               display: "flex",
               flexDirection: "column",
               gap: "12px",
+              fontSize: "18px",
             }}
           >
+            <div>📅 25 July 2026</div>
+
             <div>
-              🏃 Online registration closes at 11:00am on Saturday
+              🕑 Registration from 2:00pm
             </div>
 
             <div>
-              🕑 Additional event registrations will be available in person from
-              2:00pm
+              📍 Kennington Park
+              (by the outdoor gym)
             </div>
 
             <div>
-              👥 Team allocations may change depending on participation numbers
+              🏆 Individual & Team Events
             </div>
 
             <div>
-              🥤 Bring food and drinks to keep you fuelled!
-            </div>
-
-            <div>
-              🎉 Bring your friends and supporters
-            </div>
-
-            <div>
-              🏅 Medals available across a range of events
-            </div>
-
-            <div>
-              🔫 Don't be late – the starting gun goes off at 3:00pm sharp!
+              👥 Registration Open
             </div>
           </div>
         </div>
