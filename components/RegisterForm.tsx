@@ -7,9 +7,6 @@ import TeamPicker from "./TeamPicker";
 export default function RegisterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [contactName, setContactName] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
 
   const [message, setMessage] = useState("");
 
@@ -48,48 +45,43 @@ export default function RegisterForm() {
     loadData();
   }, []);
 
-async function register() {
-  const participant = await supabase
-    .from("participants")
-    .insert([
-      {
-        name,
-        email,
-        mobile_number: mobile,
-        emergency_contact_name: contactName,
-        emergency_contact_number: contactNumber,
-      },
-    ])
-    .select()
-    .single();
-
-  if (participant.error) {
-    setMessage(participant.error.message);
-    return;
-  }
-
-  for (const eventId of selectedEvents) {
-    await supabase
-      .from("registration_events")
+  async function register() {
+    const participant = await supabase
+      .from("participants")
       .insert([
         {
-          participant_id: participant.data.id,
-          event_id: eventId,
-          team_id: selectedTeams[eventId] || null,
+          name,
+          email,
         },
-      ]);
+      ])
+      .select()
+      .single();
+
+    if (participant.error) {
+      setMessage(participant.error.message);
+      return;
+    }
+
+    for (const eventId of selectedEvents) {
+      await supabase
+        .from("registration_events")
+        .insert([
+          {
+            participant_id: participant.data.id,
+            event_id: eventId,
+            team_id: selectedTeams[eventId] || null,
+          },
+        ]);
+    }
+
+    setMessage("success");
+
+    setName("");
+    setEmail("");
+    setSelectedEvents([]);
+    setSelectedTeams({});
   }
 
-  setMessage("success");
-
-  setName("");
-  setEmail("");
-  setMobile("");
-  setContactName("");
-  setContactNumber("");
-  setSelectedEvents([]);
-  setSelectedTeams({});
-}
   return (
     <div
       style={{
@@ -118,9 +110,6 @@ async function register() {
           marginBottom: "20px",
         }}
       >
-        Register on the day from 2:00pm at
-        Kennington Park.
-        <br />
         Choose your events and join a team.
       </p>
 
@@ -146,39 +135,6 @@ async function register() {
           placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            padding: "16px",
-            borderRadius: "12px",
-            border: "2px solid #e2e8f0",
-          }}
-        />
-
-        <input
-          placeholder="Mobile Number"
-          value={mobile}
-          onChange={(e) => setMobile(e.target.value)}
-          style={{
-            padding: "16px",
-            borderRadius: "12px",
-            border: "2px solid #e2e8f0",
-          }}
-        />
-
-        <input
-          placeholder="Emergency Contact Name"
-          value={contactName}
-          onChange={(e) => setContactName(e.target.value)}
-          style={{
-            padding: "16px",
-            borderRadius: "12px",
-            border: "2px solid #e2e8f0",
-          }}
-        />
-
-        <input
-          placeholder="Emergency Contact Number"
-          value={contactNumber}
-          onChange={(e) => setContactNumber(e.target.value)}
           style={{
             padding: "16px",
             borderRadius: "12px",
@@ -300,11 +256,9 @@ async function register() {
             </p>
 
             <p>
-              📅 25 July 2026
-              <br />
-              🕑 Starts at 2:00pm
-              <br />
-              📍 Kennington Park (by the outdoor gym)
+              Additional event registrations will
+              be available in person at Kennington
+              Park from 2:00pm on Saturday.
             </p>
 
             <p
@@ -312,7 +266,9 @@ async function register() {
                 fontWeight: "bold",
               }}
             >
-              See you there!
+              See you there — and don't forget,
+              the starting gun goes off at
+              3:00pm sharp!
             </p>
           </div>
         )}
