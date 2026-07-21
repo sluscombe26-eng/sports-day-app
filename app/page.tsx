@@ -17,8 +17,8 @@ export default function Home() {
         }}
       >
         <img
-  src="/poster.jpeg"
-alt="Baririball Academy Sports Day Poster"
+          src="/poster.jpeg"
+          alt="Baririball Academy Sports Day Poster"
           style={{
             width: "100%",
             borderRadius: "24px",
@@ -31,18 +31,8 @@ alt="Baririball Academy Sports Day Poster"
         <div
           style={{
             background: "white",
-            borderRadius: "24px",
-            padding: "24px",
-            marginBottom: "20px",
-            boxShadow:
-              "0 2px 10px rgba(0,0,0,0.08)",
-            textAlign: "left",
-          }}
-        >
-          <h1
-            style={{
-              marginTop: 0,
-              marginBottom: "10px",
+            0,
+              marginBottom: "8px",
               fontSize: "48px",
               lineHeight: "1.1",
               color: "#2563eb",
@@ -53,54 +43,105 @@ alt="Baririball Academy Sports Day Poster"
             3rd Sports Day
           </h1>
 
-          <p
+          <h2
             style={{
-              fontSize: "22px",
-              lineHeight: "1.5",
-              color: "#334155",
-              marginBottom: "25px",
+              marginTop: 0,
+              color: "#64748b",
+              fontSize: "24px",
             }}
           >
-            Compete.
+            Hosted by Vanity Von Glow
+          </h2>
+
+          <p
+            style={{
+              fontSize: "20px",
+              lineHeight: "1.6",
+              color: "#334155",
+            }}
+          >
+            Join us for an afternoon of fun,
+            competition and community at
+            Kennington Park.
+          </p>
+
+          <p
+            style={{
+              fontSize: "18px",
+              color: "#334155",
+            }}
+          >
+            A mix of individual and team events
+            are available.
+          </p>
+
+          <p
+            style={{
+              fontSize: "18px",
+              color: "#334155",
+            }}
+          >
+            Sign up for events below.
+          </p>
+
+          <p
+            style={{
+              fontSize: "18px",
+              color: "#334155",
+              marginBottom: "30px",
+            }}
+          >
+            Online registration closes at
+            <strong> 11:00am on Saturday</strong>.
             <br />
-            Team Up.
-            <br />
-            Have Fun.
+            From <strong>2:00pm</strong> onwards,
+            additional event registrations will
+            be available in person at the park.
           </p>
 
           <div
             style={{
+              background: "#f8fafc",
+              borderRadius: "16px",
+              padding: "20px",
+              border: "2px solid #e2e8f0",
               display: "flex",
               flexDirection: "column",
               gap: "12px",
               fontSize: "18px",
             }}
           >
-            <div>📅 25 July 2026</div>
-
             <div>
-              🕑 Registration from 2:00pm
+              🏃 Online registration closes at
+              11:00am on Saturday
             </div>
 
             <div>
-              📍 Kennington Park
-              (by the outdoor gym)
+              🕑 Additional event registrations
+              will be available in person from
+              2:00pm
             </div>
 
             <div>
-              🏆 Individual & Team Events
+              👥 Team allocations may change
+              depending on participation numbers
             </div>
 
             <div>
-              👥 Registration Open
+              🥤 Bring food and drinks to keep
+              you fuelled!
             </div>
-          </div>
-        </div>
 
-        <EventsList />
+            <div>
+              🎉 Bring your friends and
+              supporters
+            </div>
 
-        <RegisterForm />
-      </div>
-    </main>
-  );
-}
+            <div>
+              🏅 Medals of course to be awarded!
+            </div>
+
+            <div>
+              🔫 Don't be late – the starting
+              gun goes off at 3:00pm sharp!
+            </div
