@@ -15,16 +15,16 @@ export default function Home() {
           margin: "0 auto",
           padding: "20px",
         }}
-      >
-        /poster.jpegBaririball Academy Sports Day Poster"
-          style={{
-            width: "100%",
-            borderRadius: "24px",
-            marginBottom: "20px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-          }}
-        />
-
+    <img
+  src="/poster.jpeg"
+  alt="Baririball Academy Sports Day Poster"
+  style={{
+    width: "100%",
+    borderRadius: "24px",
+    marginBottom: "20px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+  }}
+/>
         <div
           style={{
             background: "white",
