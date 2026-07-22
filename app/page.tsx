@@ -125,7 +125,6 @@ export default function Home() {
           </div>
         </div>
 
-        <EventsList />
 
         <RegisterForm />
       </div>
