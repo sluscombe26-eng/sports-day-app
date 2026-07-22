@@ -124,22 +124,26 @@ export default function RegisterForm() {
           placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          style={{
-            padding: "16px",
-            borderRadius: "12px",
-            border: "2px solid #e2e8f0",
-          }}
+         style={{
+  padding: "20px",
+  borderRadius: "12px",
+  border: "2px solid #e2e8f0",
+  fontSize: "20px",
+  fontWeight: "bold",
+}}
         />
 
         <input
           placeholder="Email Address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            padding: "16px",
-            borderRadius: "12px",
-            border: "2px solid #e2e8f0",
-          }}
+         style={{
+  padding: "20px",
+  borderRadius: "12px",
+  border: "2px solid #e2e8f0",
+  fontSize: "20px",
+  fontWeight: "bold",
+}}
         />
 
         <h3
