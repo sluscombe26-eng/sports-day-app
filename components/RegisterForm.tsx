@@ -196,7 +196,9 @@ export default function RegisterForm() {
               event.event_type === "team" && (
                 <TeamPicker
                   eventName={event.name}
-                  teams={teams}
+                  teams={teams.filter(
+                    (team) => team.event_id === event.id
+                  )}
                   members={teamMembers}
                   selectedTeam={
                     selectedTeams[event.id] || ""
