@@ -67,8 +67,8 @@ export default function Home() {
               color: "#334155",
             }}
           >
-            Join me for an afternoon of fun, competition and celebration at
-            Kennington Park.
+            Join me for an afternoon of Birthday fun, competition and celebration at
+            Kennington Park (By the outdoor gym).
           </p>
 
           <p
