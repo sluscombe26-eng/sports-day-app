@@ -101,7 +101,7 @@ export default function RegisterForm() {
           fontSize: "34px",
         }}
       >
-        🎟️ Register For Sports Day
+        🎟️ Register For Sports Gay
       </h2>
 
       <p
