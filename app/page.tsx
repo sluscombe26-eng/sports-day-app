@@ -48,7 +48,7 @@ export default function Home() {
       color: "#2563eb",
     }}
   >
-    Barriball Academy's Sports Day
+    Barriball Academy's Sports Gay
   </h1>
 
           <h2
