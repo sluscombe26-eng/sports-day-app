@@ -258,7 +258,7 @@ export default function RegisterForm() {
 
             <p>
               Thank you for registering for
-              Baririball Academy's 3rd Sports Day.
+              Barriball Academy's 3rd Sports Day.
             </p>
 
             <p>
