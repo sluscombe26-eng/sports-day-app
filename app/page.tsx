@@ -48,9 +48,7 @@ export default function Home() {
       color: "#2563eb",
     }}
   >
-    Barriball Academy's
-    <br />
-    Sports Day
+    Barriball Academy's Sports Day
   </h1>
 
           <h2
