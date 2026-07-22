@@ -68,7 +68,7 @@ export default function Home() {
             }}
           >
             Join me for an afternoon of Birthday fun, competition and celebration at
-            Kennington Park (By the outdoor gym).
+            Kennington Park (by the outdoor gym).
           </p>
 
           <p
