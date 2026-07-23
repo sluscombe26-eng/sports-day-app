@@ -1,5 +1,7 @@
 import { supabase } from "../../../lib/supabase";
 
+export const dynamic = "force-dynamic";
+
 export default async function CheckInPage() {
   const participants = await supabase
     .from("participants")
